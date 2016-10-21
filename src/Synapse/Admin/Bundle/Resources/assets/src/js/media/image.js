@@ -13,17 +13,17 @@ $(() => {
   };
 
   $('.synapse-image-format').each((index, elt) => {
-    var $this = $(elt);
-    var croppers = {};
+    let $this = $(elt);
+    let croppers = {};
 
     $this.find('.panel-signets a[data-toggle="tab"]').on('shown.bs.tab', (e) => {
-      var $img = $this.find('.cropping-area img:visible');
-      var id = $img.prop('id');
+      let $img = $this.find('.cropping-area img:visible');
+      let id = $img.prop('id');
 
       if (id && !croppers[id]) {
-        var $container = $img.parents('.format-container');
-        var $data = $img.parents('.cropping-area');
-        var $displayArea = $container.find('.display-area');
+        let $container = $img.parents('.format-container');
+        let $data = $img.parents('.cropping-area');
+        let $displayArea = $container.find('.display-area');
 
         croppers[id] = { ratio: $data.data('ratio') };
 
@@ -31,7 +31,7 @@ $(() => {
           minContainerWidth: "100%",
           aspectRatio: croppers[id].ratio,
           zoomOnWheel: false,
-          crop: (e) => {
+          crop(e) {
             croppers[id].data = {
               x: e.x, y: e.y, width: e.width, height: e.height,
               rotate: e.rotate, scaleX: e.scaleX, scaleY: e.scaleY
@@ -42,8 +42,8 @@ $(() => {
           e.preventDefault();
 
           // toggle buttons
-          var $crop = $(e.currentTarget).addClass('hidden');
-          var $spinner = $crop.siblings('.spinner-crop').removeClass('hidden');
+          let $crop = $(e.currentTarget).addClass('hidden');
+          let $spinner = $crop.siblings('.spinner-crop').removeClass('hidden');
 
           // server call
           $.ajax({
@@ -52,7 +52,7 @@ $(() => {
             data: {
               options: croppers[id].data
             },
-            success: (data) => {
+            success(data) {
               $crop.removeClass('hidden');
               $spinner.addClass('hidden');
 
@@ -60,7 +60,6 @@ $(() => {
               $displayArea
                 .prepend(_templates.success_message())
                 .find('.formatted-image')
-                  .empty()
                   .html(_templates.formatted_image(
                     $displayArea.data('assets-prefix')
                     + data.webPath

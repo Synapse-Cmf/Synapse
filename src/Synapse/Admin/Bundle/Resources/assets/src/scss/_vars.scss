@@ -4,21 +4,21 @@ $color-synapse-lighter-blue: #69bce2;
 $color-synapse-blue: #8fd2ef;
 $color-synapse-dark-blue: #3ca3dc;
 
-$color-synapse-green-lighter: #66CFC7;
-$color-synapse-green-light: #3CB9B0;
-$color-synapse-green: #1DA9A1;
-$color-synapse-green-dark: #00968B;
-$color-synapse-green-darker: #00736B;
+$color-synapse-green-lighter: #66cfc7;
+$color-synapse-green-light: #3cb9b0;
+$color-synapse-green: #1da9a1;
+$color-synapse-green-dark: #00968b;
+$color-synapse-green-darker: #00736b;
 
-$color-synapse-orange-lighter: #FFCE93;
-$color-synapse-orange-light: #FFB863;
-$color-synapse-orange: #FFA53B;
-$color-synapse-orange-dark: #FF9312;
-$color-synapse-orange-darker: #FF8B00;
+$color-synapse-orange-lighter: #ffce93;
+$color-synapse-orange-light: #ffb863;
+$color-synapse-orange: #ffa53b;
+$color-synapse-orange-dark: #ff9312;
+$color-synapse-orange-darker: #ff8b00;
 
 // Admin theme vars override
 
-$font-0: "Helvetica Neue";
+$font-0: 'Helvetica Neue';
 $font-1: Helvetica;
 $font-2: Arial;
 $font-3: sans-serif;
@@ -50,6 +50,8 @@ $color-primary-light: $color-main-light;
 $color-primary: $color-main;
 $color-primary-dark: $color-main-dark;
 $color-primary-darker: $color-main-darker;
+
+$color-dropzone: #7087a3;
 
 $syn-button-size: 80px;
 $syn-header-height: 60px;

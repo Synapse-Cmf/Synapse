@@ -1,19 +1,27 @@
-@import "_vars.scss";
-@import "../../node_modules/majora-admin-theme/src/scss/main.scss";
+@import 'vars';
+@import '../../node_modules/majora-admin-theme/src/scss/main';
 
 // Styles
 
 a.logo {
-  margin-top: 8px;
   margin-left: -5px;
+  margin-top: 8px;
+
   img {
     height: 2.1em;
   }
 }
+
 .form-control {
-  border: 1px solid #cccccc;
+  border: 1px solid $gray-neutral-50;
 }
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
   vertical-align: middle;
 }
 
@@ -24,77 +32,85 @@ a.logo {
 }
 
 .dropzone {
-   border: 2px dotted #7087A3;
-}
-.dropzone .dz-default.dz-message{
-   font-size: 14px;
-   font-style: italic;
-   color: #7087A3;
+  border: 2px dotted $color-dropzone;
+
+  .dz-default.dz-message {
+    color: $color-dropzone;
+    font-size: 14px;
+    font-style: italic;
+  }
 }
 
 .button-bar {
   text-align: center;
 
   &.affix {
-    top: $syn-header-height + $syn-generic-margin;
     position: fixed !important;
+    top: $syn-header-height + $syn-generic-margin;
+  }
+
+  .btn-big {
+    margin-bottom: 10px;
   }
 }
-.button-bar .btn-big {
-  margin-bottom: 10px;
-}
-.col-fix .button-bar {
-  width: $syn-button-size;
-}
-.col-fix .button-bar .btn-big {
-  // display: block;
-}
+
 .btn-big {
-  text-align: center;
   width: $syn-button-size;
   height: $syn-button-size;
+  text-align: center;
+
+  i {
+    display: block;
+    font-size: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }
-.btn-big i {
-  display: block;
-  font-size: 2em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
+
 .row-fluid {
   display: flex;
   flex-direction: row;
 }
+
 .col-fix,
 .col-fill {
-  position: relative;
   min-height: 1px;
+  position: relative;
+}
+
+.col-fill {
+  flex: 1 1 auto;
+  padding-left: 0;
+  padding-right: $syn-generic-margin;
 }
 
 .col-fix {
   flex: 0 0 auto;
   width: $syn-button-size;
-}
 
-.col-fill {
-  flex: 1 1 auto;
-  padding-right: $syn-generic-margin;
-  padding-left: 0;
-}
-.col-fix + .col-fill {
-  padding-left: $syn-generic-margin;
+  .button-bar {
+    width: $syn-button-size;
+  }
+
+  + .col-fill {
+    padding-left: $syn-generic-margin;
+  }
 }
 
 .image-container {
   width: 100%;
-  & > img {
+
+  > img {
     max-width: 100%;
     border: solid 1px $gray-neutral-50;
   }
+
   &.cropping-area > img {
     width: 100%;
-    border-width: 0px;
+    border-width: 0;
   }
 }
+
 .format-action-bar {
   margin: 15px 0;
 }
@@ -110,8 +126,8 @@ a.logo {
   }
 
   .template-init-button {
-    margin-top: $syn-generic-margin;
     margin-right: $syn-generic-margin;
+    margin-top: $syn-generic-margin;
   }
 
   .separator {
@@ -128,6 +144,7 @@ a.logo {
 
   .zone-form-container {
     margin-top: $syn-generic-margin;
+
     h4 {
       margin-top: 0;
     }
@@ -162,6 +179,7 @@ a.logo {
       order: 5;
     }
   }
+
   .component-form-content {
     padding: 0 10px 1px;
   }
