@@ -78,7 +78,13 @@
           </a>
           <h3>Content</h3>
         </header>
-        {{ form_widget(form.synapse) }}
+        {% if form.synapse is defined %}
+          {{ form_widget(form.synapse) }}
+        {% else %}
+          <div class="panel-body">
+            You have not active theme. Create one of them to apply template to this content.
+          </div>
+        {% endif %}
       </div>
 
       {# Tech #}
