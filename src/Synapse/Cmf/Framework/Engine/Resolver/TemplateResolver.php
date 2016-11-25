@@ -92,7 +92,7 @@ class TemplateResolver
                 $templateType->getName(),
                 $theme->getName(),
                 $content->getType()->getName(),
-                $content->getId()
+                $content->getContentId()
             ));
         }
 
