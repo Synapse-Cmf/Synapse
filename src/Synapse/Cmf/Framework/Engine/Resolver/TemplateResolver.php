@@ -88,7 +88,7 @@ class TemplateResolver
             )
         ) {
             throw new InvalidTemplateException(sprintf(
-                'Any "%s" template found under "%s" theme for "%s#%d" content.',
+                'No displayable template found for template type "%s" in theme "%s" for the "%s#%d" content.',
                 $templateType->getName(),
                 $theme->getName(),
                 $content->getType()->getName(),
