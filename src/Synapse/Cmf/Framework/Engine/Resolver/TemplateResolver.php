@@ -88,7 +88,7 @@ class TemplateResolver
             )
         ) {
             throw new InvalidTemplateException(sprintf(
-                'No displayable template found for template type "%s" in theme "%s" for the "%s#%d" content.',
+                'No active template found for template type "%s" in theme "%s" for the "%s#%d" content.',
                 $templateType->getName(),
                 $theme->getName(),
                 $content->getType()->getName(),
