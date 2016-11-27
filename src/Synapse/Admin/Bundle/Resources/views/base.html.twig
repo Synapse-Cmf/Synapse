@@ -29,7 +29,7 @@
     <main id="container">
       <header class="header white-bg">
         <!-- logo -->
-        <a href="/" class="logo">
+        <a href="{{ app.request.baseUrl }}" class="logo">
         {% block logo %}
           <img src="{{ asset('/bundles/synapseadmin/images/logo_text_blue_large.png') }}" alt="Synapse logo">
         {% endblock %}
