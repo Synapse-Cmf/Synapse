@@ -45,6 +45,7 @@
             </argument>
             <call method="setEventDispatcher"><argument type="service" id="event_dispatcher" /></call>
             <call method="setValidator"><argument type="service" id="validator" /></call>
+            <call method="setRepository"><argument type="service" id="synapse.page.repository" /></call>
         </service>
 
         <!-- Page edition action -->

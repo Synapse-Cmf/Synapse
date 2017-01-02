@@ -2,6 +2,8 @@
 
 namespace Synapse\Page\Bundle\Action\Page;
 
+use Majora\Framework\Repository\RepositoryInterface;
+use Synapse\Cmf\Framework\Engine\Exception\InvalidTemplateException;
 use Synapse\Page\Bundle\Entity\Page;
 use Synapse\Page\Bundle\Event\Page\Event as PageEvent;
 use Synapse\Page\Bundle\Event\Page\Events as PageEvents;
@@ -26,6 +28,11 @@ class CreateAction extends AbstractAction
      * @var PathGeneratorInterface
      */
     protected $pathGenerator;
+
+    /**
+     * @var RepositoryInterface
+     */
+    private $repository;
 
     /**
      * Construct.
@@ -55,6 +62,10 @@ class CreateAction extends AbstractAction
                 ->generatePath($this->page, $this->path ?: '')
             )
         ;
+
+        if ($this->repository->findByPath($this->page->getPath())) {
+            throw new InvalidTemplateException(sprintf('Path "%s"already exists.', $this->page->getPath()));
+        }
 
         $this->assertEntityIsValid($this->page, array('Page', 'creation'));
 
@@ -110,6 +121,18 @@ class CreateAction extends AbstractAction
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * @param RepositoryInterface $repository
+     *
+     * @return $this
+     */
+    public function setRepository(RepositoryInterface $repository)
+    {
+        $this->repository = $repository;
 
         return $this;
     }
