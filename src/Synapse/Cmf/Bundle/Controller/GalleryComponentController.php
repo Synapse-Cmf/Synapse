@@ -32,7 +32,8 @@ class GalleryComponentController extends Controller
             ->decorate(array(
                 'content' => $content,
                 'medias' => $this->container->get('synapse.image.loader')
-                    ->retrieveAll(array('id' => $component->getData('medias'))),
+                    ->retrieveAll(array('id' => $mediaData))
+                        ->sortIdsAtTheTop($mediaData),
             ))
         ;
     }
