@@ -18,32 +18,11 @@ class PageMenuContentController extends Controller
      */
     public function renderAction(ComponentInterface $component, ContentInterface $content)
     {
-        $menu = array();
-        $pageLoader = $this->get('synapse.page.loader');
-
-        foreach ($component->getData('data', array()) as $menuData) {
-            // name / url required
-            if (empty($menuData['label']) || empty($menuData['page'])) {
-                continue;
-            }
-            // page exists or is online ?
-            if (!$page = $pageLoader->retrieve($menuData['page'])) {
-                continue;
-            }
-            if (!$page->isOnline()) {
-                continue;
-            }
-            $menu[$menuData['position']] = array(
-                'label' => $menuData['label'],
-                'url' => $this->get('router')->generate('synapse_content_type_page', ['path' => $page->getPath()]),
-            );
-        }
-
         return $this->get('synapse')
             ->createDecorator($component)
             ->decorate(array(
                 'content' => $content,
-                'page_menu' => $menu,
+                'page_menu' => $this->get('synapse.page.page_menu_view_builder')->buildView($component),
             ))
             ;
     }

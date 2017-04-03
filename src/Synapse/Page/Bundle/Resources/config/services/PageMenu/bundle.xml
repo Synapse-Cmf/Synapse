@@ -12,6 +12,15 @@
             <argument type="service" id="synapse.page.loader" />
         </service>
 
+        <service id="synapse.page.page_menu_view_builder" class="Synapse\Page\Bundle\ViewBuilder\PageMenuViewBuilder">
+            <argument type="service" id="synapse.page.loader" />
+            <argument type="service" id="router" />
+        </service>
+
+        <service id="synapse.page.twig.page_menuextension" class="Synapse\Page\Bundle\Twig\PageMenuExtension" public="false">
+            <tag name="twig.extension" />
+        </service>
+
     </services>
 
 </container>

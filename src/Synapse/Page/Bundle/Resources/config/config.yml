@@ -32,7 +32,7 @@ synapse_cmf:
         page_menu:
             form: 'Synapse\Page\Bundle\Form\PageMenu\PageMenuType'
             controller: SynapsePageBundle:PageMenuContent:render
-            template_path: "SynapsePageBundle:Admin/PageMenu:page_menu.html.twig"
+            template_path: "SynapsePageBundle:PageMenu:page_menu_layout.html.twig"
 
 synapse_admin:
     base_layout: "SynapsePageBundle::base.html.twig"

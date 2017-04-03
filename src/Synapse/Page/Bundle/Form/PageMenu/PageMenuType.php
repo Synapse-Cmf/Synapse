@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Synapse\Cmf\Bundle\Form\Type\Theme\ComponentDataType;
+use Synapse\Page\Bundle\Form\PageMenu\DataMapper\PageMenuTreeMapper;
 
 /**
  * PageMenu component form type.
@@ -30,14 +31,15 @@ class PageMenuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('data', CollectionType::class, array(
+            ->add('menu_tree', CollectionType::class, array(
                 'entry_type' => PageMenuItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
+                'delete_empty' => true,
                 'attr' => [
                     'class' => 'synapse-page-menu-data',
-                ],
-            ))
+                ], ))
+            ->setDataMapper(new PageMenuTreeMapper('menu_tree'))
         ;
     }
 

@@ -2,7 +2,9 @@
   'use strict';
 
   $(function () {
-    $('.synapse-page-menu').synapsePageMenu();
+    $('.synapse-page-menu').synapsePageMenu({
+      eltPrototypeSelector: '.synapse-page-menu-data'
+    });
   });
 
 }(jQuery, _));

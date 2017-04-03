@@ -2,20 +2,34 @@
 
 {% block page_menu_row %}
   <div class="synapse-page-menu">
-    {{ form_row(form.data) }}
-    <a href="" class="btn btn-default add-page-menu"><i class="fa fa-plus"></i></a>
+    {{ form_row(form.menu_tree) }}
+    <div class="form-content">
+      <button class="btn btn-default add-page-menu add-first-level-page-menu"><i class="fa fa-plus"></i></button>
+    </div>
   </div>
 {% endblock %}
 
 {% block page_menu_item_row %}
-  <div class="row page-menu-item" id="{{ form.vars.id }}">
-    <div class="col-md-3">{{ form_widget(form.label) }}</div>
-    <div class="col-md-8">{{ form_widget(form.page) }}</div>
-    {{ form_widget(form.position) }}
-    <div class="col-md-1">
-      <a href="" role="delete" class="btn btn-default">
-        <i class="fa fa-times"></i>
-      </a>
+  <div
+    class="synapse-page-menu-item row"
+    id="{{ form.vars.id }}"
+    data-level="{{ form.vars.data.level }}"
+    data-parent="{{ form.vars.data.parent is defined ? form.vars.data.parent : '' }}"
+    data-menu-page-id="{{ form.vars.data.id is defined ? form.vars.data.id : '' }}">
+    <div class="row form-content">
+      <div class="level-indicator {% if form.vars.data.level %}col-md-{{ form.vars.data.level }} {% endif %}"></div>
+      <div class="col-md-3">{{ form_widget(form.label) }}</div>
+      <div class="col-md-3">
+        {{ form_widget(form.page) }}
+        {{ form_widget(form.position) }}
+        {{ form_widget(form.id) }}
+        {{ form_widget(form.parent) }}
+      </div>
+      {% set diff_col = form.vars.data.level ? (form.vars.data.level < 5 ? (6 - form.vars.data.level ): 5) : '6' %}
+      <div class="col-md-{{ diff_col }} actions">
+        <button class="btn btn-default add-page-menu"><i class="fa fa-plus"></i></button>
+        <button role="delete" class="btn btn-default remove-page-menu"><i class="fa fa-times"></i></button>
+      </div>
     </div>
   </div>
 {% endblock %}

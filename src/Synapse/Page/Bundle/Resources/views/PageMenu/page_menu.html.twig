@@ -1,0 +1,11 @@
+<div class="synapse-page-menu">
+  {% set link = menu.menu %}
+  <a href="{{ link.url }}" title="{{ link.title }}">{{ link.label }}</a>
+  {% if menu.tree %}
+    <ul class="synapse-page-menu-submenu">
+      {% for tree in menu.tree %}
+        <li>{{ render_page_menu(tree) }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
